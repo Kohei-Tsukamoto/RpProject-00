@@ -55,7 +55,7 @@ class ScheduleController extends Controller
             $ingredients = $recipe->ingredients()->get();
             foreach ($ingredients as $ingredient) {
                 //出力したい人数分の分量を計算
-                $amount_howmany = round(($ingredient->pivot->amount * $how_many) / $recipe->many_people); //ceil()を使用するか。一人分を出力するときに問題
+                $amount_howmany = ceil(($ingredient->pivot->amount * $how_many) / $recipe->many_people); //ceil()を使用するか。一人分を出力するときに問題
                 if (array_key_exists($ingredient->ingredient, $schedule_ingredients)) {
                     $schedule_ingredients[$ingredient->ingredient] += [$amount_howmany, $ingredient->unit];
                 } else {
@@ -63,12 +63,13 @@ class ScheduleController extends Controller
                 }
             }
         }
-        var_dump($schedule_ingredients);
         return view('pages/recipe_schedule', [
             'user' => $user,
             'recipes' => $recipes,
             'schedule_ingredients' => $schedule_ingredients,
-            'how_many' => $how_many
+            'how_many' => $how_many,
+            'from' => $from,
+            'to' => $to,
         ]);
     }
 }

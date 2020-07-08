@@ -56,7 +56,10 @@ Route::post('/schedule_register', 'ScheduleController@make_schedule');
 Route::get('/schedule/set', function () {
     return view('pages/recipe_schedule_set');
 });
+
 Route::get('/recipe_schedule/show', 'ScheduleController@show_schedule');
+
+Route::get('/recipes', 'RecipeSearchController@index');
 
 
 

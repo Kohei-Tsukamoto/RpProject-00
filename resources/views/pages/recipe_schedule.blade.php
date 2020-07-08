@@ -20,7 +20,7 @@
       @foreach ($recipes as $recipe)
       <a href="{{ action('RecipeController@show', ['id' => $recipe->id]) }}">
         <div class="row">
-          <div class="col-1">
+          <div class="col">
             <img src="{{ asset('storage/img/' . $recipe->recipe_img)}}" alt="recipe_image" class="img-thumbnail">
           </div>
           <div class="col-10">
@@ -31,13 +31,11 @@
       @endforeach
     </div>
     <div class="container">
-      <p>材料</p>
-      <p>{{ $how_many }}人分の合計</p>
+      <p>買い物リスト: {{ $from . "~" . $to }}</p>
+      <p>{{ $how_many }}人分</p>
 
-      @foreach($schedule_ingredients as $ingredient)
-      {{ $ingredient[] }}
-      {{ $ingredient[0] . $ingredient[1]  }}
-      {{--<p>{{ $ingredient->ingredient }} 個数　{{}}　　{{単位}}</p>--}}
+      @foreach($schedule_ingredients as $key => $value)
+      {{ $key . ":" . $value[0] . $value[1] }}<br />
       @endforeach
     </div>
   </div>
