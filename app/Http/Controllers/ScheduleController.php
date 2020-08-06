@@ -30,7 +30,6 @@ class ScheduleController extends Controller
 
     public function show_schedule(Request $request)
     {
-
         $user = Auth::user();
         $from = $request->from;
         $to = $request->to;
@@ -63,13 +62,63 @@ class ScheduleController extends Controller
                 }
             }
         }
-        return view('pages/recipe_schedule', [
-            'user' => $user,
-            'recipes' => $recipes,
-            'schedule_ingredients' => $schedule_ingredients,
-            'how_many' => $how_many,
-            'from' => $from,
-            'to' => $to,
-        ]);
+        return view(
+            'pages/recipe_schedule',
+            [
+                'user' => $user,
+                'recipes' => $recipes,
+                'schedule_ingredients' => $schedule_ingredients,
+                'how_many' => $how_many,
+                'from' => $from,
+                'to' => $to
+            ]
+        );
+    }
+
+    public function show_weeklyschedule(Request $request)
+    {
+        $user = Auth::user();
+        $from = date("Y/m/d");
+        $to = date("Y-m-d", strtotime("+1 week"));
+        $schedules = $user->schedules->whereBetween('recipe_day', [$from, $to])->all();
+
+        $recipes = [];
+        foreach ($schedules as $schedule) {
+            $schedule_recipe = $schedule->recipes()->get();
+            foreach ($schedule_recipe as $recipe) {
+                $recipes[] = $recipe;
+            }
+        };
+
+
+        $ingredients = [];
+        $schedule_ingredients = [];
+        //ひとまず２人分で出力
+        $how_many = "2";
+
+        //$schedule_amounts = [];
+        foreach ($recipes as $recipe) {
+            $ingredients = $recipe->ingredients()->get();
+            foreach ($ingredients as $ingredient) {
+                //出力したい人数分の分量を計算
+                $amount_howmany = ceil(($ingredient->pivot->amount * $how_many) / $recipe->many_people); //ceil()を使用するか。一人分を出力するときに問題
+                if (array_key_exists($ingredient->ingredient, $schedule_ingredients)) {
+                    $schedule_ingredients[$ingredient->ingredient] += [$amount_howmany, $ingredient->unit];
+                } else {
+                    $schedule_ingredients[$ingredient->ingredient] = [$amount_howmany, $ingredient->unit];
+                }
+            }
+        }
+        return view(
+            'pages/recipe_schedule',
+            [
+                'user' => $user,
+                'recipes' => $recipes,
+                'schedule_ingredients' => $schedule_ingredients,
+                'how_many' => $how_many,
+                'from' => $from,
+                'to' => $to
+            ]
+        );
     }
 }

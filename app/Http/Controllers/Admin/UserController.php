@@ -10,22 +10,10 @@ use Hash;
 
 class UserController extends Controller
 {
-    public function add()
-    {
-        return view('admin.user.create');
-    }
-
-    public function create()
-    {
-        return redirect('admin/user/create');
-    }
 
     public function edit()
     {
         $user = Auth::user();
-
-
-
         return view('admin.user.edit', ['user' => $user]);
     }
 

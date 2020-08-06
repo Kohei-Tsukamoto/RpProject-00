@@ -39,4 +39,9 @@ class Recipe extends Model
     {
         return $this->hasMany('App\Process');
     }
+
+    public function favorite_users()
+    {
+        return $this->belongsToMany(User::class, 'favorites', 'recipe_id', 'user_id')->withTimestamps();
+    }
 }

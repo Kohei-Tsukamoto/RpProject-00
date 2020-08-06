@@ -65,4 +65,38 @@ class User extends Authenticatable
         $user->profile_img = $request->profile_img;
         $user->update();
     }
+
+    public function favorites()
+    {
+        return $this->belongsToMany(Recipe::class, 'favorites', 'user_id', 'recipe_id')->withTimestamps();
+    }
+
+    public function favorite($recipeId)
+    {
+        $exist = $this->is_favorite($recipeId);
+
+        if ($exist) {
+            return false;
+        } else {
+            $this->favorites()->attach($recipeId);
+            return true;
+        }
+    }
+
+    public function unfavorite($recipeId)
+    {
+        $exist = $this->is_favorite($recipeId);
+
+        if ($exist) {
+            $this->favorites()->detach($recipeId);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function is_favorite($recipeId)
+    {
+        return $this->favorites()->where('recipe_id', $recipeId)->exists();
+    }
 }

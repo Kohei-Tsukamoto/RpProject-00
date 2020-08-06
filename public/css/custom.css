@@ -1,0 +1,33 @@
+/*bootstrapの上書き*/
+/*検索ボタンの修正*/
+
+.btn{
+
+  border-radius: 0;
+  
+  }
+  
+  .btn-primary {
+  
+  background-color: #138891;
+  
+  border-color: #138891;
+  
+  }
+
+  .btn-secondary {
+    background-color: #F68B00;
+
+    border-color: #F68B00;
+
+  }
+
+  .btn-secondary:hover {
+    background-color: #a35d01;
+  }
+
+body {
+background-color: #eee1d3;
+}
+
+

@@ -63,6 +63,13 @@ class IngredientTableSeeder extends Seeder
         DB::table('ingredients')->insert($param);
 
         $param = [
+            'ingredient' => 'プチトマト',
+            'category_id' => 1,
+            'unit' => '個',
+        ];
+        DB::table('ingredients')->insert($param);
+
+        $param = [
             'ingredient' => 'きゅうり',
             'category_id' => 1,
             'unit' => '本',
@@ -303,9 +310,23 @@ class IngredientTableSeeder extends Seeder
         DB::table('ingredients')->insert($param);
 
         $param = [
+            'ingredient' => 'ちくわ',
+            'category_id' => 7,
+            'unit' => '本',
+        ];
+        DB::table('ingredients')->insert($param);
+
+        $param = [
             'ingredient' => '海苔',
             'category_id' => 8,
             'unit' => '枚',
+        ];
+        DB::table('ingredients')->insert($param);
+
+        $param = [
+            'ingredient' => 'コンニャク',
+            'category_id' => 8,
+            'unit' => '個',
         ];
         DB::table('ingredients')->insert($param);
 
@@ -436,6 +457,13 @@ class IngredientTableSeeder extends Seeder
         DB::table('ingredients')->insert($param);
 
         $param = [
+            'ingredient' => 'バター',
+            'category_id' => 14,
+            'unit' => 'g',
+        ];
+        DB::table('ingredients')->insert($param);
+
+        $param = [
             'ingredient' => 'チーズ',
             'category_id' => 14,
             'unit' => 'g',
@@ -511,6 +539,132 @@ class IngredientTableSeeder extends Seeder
             'ingredient' => 'パスタ',
             'category_id' => 16,
             'unit' => '人前',
+        ];
+        DB::table('ingredients')->insert($param);
+
+        $param = [
+            'ingredient' => '白ワイン',
+            'category_id' => 17,
+            'unit' => 'ml',
+        ];
+        DB::table('ingredients')->insert($param);
+
+        $param = [
+            'ingredient' => '薄力粉',
+            'category_id' => 17,
+            'unit' => 'g',
+        ];
+        DB::table('ingredients')->insert($param);
+
+        $param = [
+            'ingredient' => '塩',
+            'category_id' => 17,
+            'unit' => 'g',
+        ];
+        DB::table('ingredients')->insert($param);
+
+        $param = [
+            'ingredient' => '塩コショウ',
+            'category_id' => 17,
+            'unit' => 'g',
+        ];
+        DB::table('ingredients')->insert($param);
+
+        $param = [
+            'ingredient' => '黒胡椒',
+            'category_id' => 17,
+            'unit' => 'g',
+        ];
+        DB::table('ingredients')->insert($param);
+
+        $param = [
+            'ingredient' => '水',
+            'category_id' => 17,
+            'unit' => 'ml',
+        ];
+        DB::table('ingredients')->insert($param);
+
+        $param = [
+            'ingredient' => 'コンソメ',
+            'category_id' => 17,
+            'unit' => 'g',
+        ];
+        DB::table('ingredients')->insert($param);
+
+        $param = [
+            'ingredient' => '醤油',
+            'category_id' => 17,
+            'unit' => 'g',
+        ];
+        DB::table('ingredients')->insert($param);
+
+        $param = [
+            'ingredient' => '酒',
+            'category_id' => 17,
+            'unit' => 'ml',
+        ];
+        DB::table('ingredients')->insert($param);
+
+        $param = [
+            'ingredient' => '砂糖',
+            'category_id' => 17,
+            'unit' => 'g',
+        ];
+        DB::table('ingredients')->insert($param);
+
+        $param = [
+            'ingredient' => 'ニンニク',
+            'category_id' => 17,
+            'unit' => 'g',
+        ];
+        DB::table('ingredients')->insert($param);
+
+        $param = [
+            'ingredient' => 'パセリ',
+            'category_id' => 17,
+            'unit' => 'g',
+        ];
+        DB::table('ingredients')->insert($param);
+
+        $param = [
+            'ingredient' => 'オリーブオイル',
+            'category_id' => 17,
+            'unit' => 'g',
+        ];
+        DB::table('ingredients')->insert($param);
+
+        $param = [
+            'ingredient' => 'みりん',
+            'category_id' => 17,
+            'unit' => 'ml',
+        ];
+        DB::table('ingredients')->insert($param);
+
+        $param = [
+            'ingredient' => '味噌',
+            'category_id' => 17,
+            'unit' => 'g',
+        ];
+        DB::table('ingredients')->insert($param);
+
+        $param = [
+            'ingredient' => 'だし汁',
+            'category_id' => 17,
+            'unit' => 'ml',
+        ];
+        DB::table('ingredients')->insert($param);
+
+        $param = [
+            'ingredient' => 'ごま油',
+            'category_id' => 17,
+            'unit' => 'ml',
+        ];
+        DB::table('ingredients')->insert($param);
+
+        $param = [
+            'ingredient' => '牛脂',
+            'category_id' => 17,
+            'unit' => 'g',
         ];
         DB::table('ingredients')->insert($param);
     }

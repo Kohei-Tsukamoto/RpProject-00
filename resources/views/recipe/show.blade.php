@@ -18,6 +18,23 @@
           <input type="hidden" name="recipe_id" value="{{ $recipe->id }}">
           @csrf
         </form>
+        @if (Auth::id() != $user->id)
+
+        @if (Auth::user()->is_favorite($recipe->id))
+
+        {{ Form::open(['route' => ['favorites.unfavorite', $recipe->id], 'method' => 'delete']) }}
+        {!! Form::submit('いいね！を外す', ['class' => "button btn btn-warning"]) !!}
+        {!! Form::close() !!}
+
+        @else
+
+        {!! Form::open(['route' => ['favorites.favorite', $recipe->id]]) !!}
+        {!! Form::submit('いいね！を付ける', ['class' => "button btn btn-success"]) !!}
+        {!! Form::close() !!}
+
+        @endif
+
+        @endif
         <script>
           $('#datepicker').datepicker({
             dateFormat: 'yy年mm月dd日',

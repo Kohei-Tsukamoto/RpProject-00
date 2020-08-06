@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 
-@section('title', 'profileの新規作成')
+@section('title', 'profileの編集')
 
 @section('content')
 <div class="container">

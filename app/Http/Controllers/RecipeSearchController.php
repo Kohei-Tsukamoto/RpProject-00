@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Recipe;
+use DB;
 
 
 class RecipeSearchController extends Controller
@@ -12,14 +13,14 @@ class RecipeSearchController extends Controller
     {
 
         $keyword = $request->keyword;
-        $query = Recipe::query();
-
 
         if (!empty($keyword)) {
-            $query->where('recipe_name', 'LIKE', "%{$keyword}%");
+            $recipes = DB::table('recipes')
+                ->where('recipe_name', 'like', '%' . $keyword . '%')
+                ->paginate(4);
+        } else {
+            $recipes = DB::table('recipes')->paginate(4);
         }
-
-        $recipes = $query->get();
 
         return view('recipe.index', ['recipes' => $recipes]);
     }

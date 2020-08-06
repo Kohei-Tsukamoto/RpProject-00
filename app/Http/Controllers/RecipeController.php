@@ -35,4 +35,16 @@ class RecipeController extends Controller
 
         ]);
     }
+
+
+    public function show_all()
+    {
+        $recipes = Recipe::all();
+        return view(
+            'recipe.index',
+            [
+                'recipes' => $recipes
+            ]
+        );
+    }
 }
